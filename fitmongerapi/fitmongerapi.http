@@ -1,0 +1,6 @@
+@fitmongerapi_HostAddress = http://localhost:5038
+
+GET {{fitmongerapi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
