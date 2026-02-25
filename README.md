@@ -9,9 +9,9 @@
 - Site written in React, using Vite
 - Runs on nginx docker continer
 ## Back End
-### API
+### API - fitmongerapi
 - Restful API using c#
-### DB
+### DB - fitmongerdb
 - Postgres Docker Container
 ### BLOB Storage
 - MinIO Blob Storages
