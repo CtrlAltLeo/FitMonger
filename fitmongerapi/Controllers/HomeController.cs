@@ -16,4 +16,10 @@ public class HomeController : ControllerBase
         return _testDBService.GetTest();
     }
 
+    [HttpPost("/")]
+    public Test SaveTest(Test test)
+    {
+        return _testDBService.SaveTest(test);   
+    }
+
 }

@@ -14,4 +14,11 @@ public class TestDBService
     {
         return _context.Tests.FirstOrDefault();
     }
+
+    public Test SaveTest(Test test)
+    {
+        _context.Tests.Add(test);
+        _context.SaveChanges();
+        return test;
+    }
 }

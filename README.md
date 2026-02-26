@@ -22,4 +22,3 @@
 - Git
 - i3 window manager
 - Spotify
-
