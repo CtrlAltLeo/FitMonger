@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -10,9 +11,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace fitmongerdb.Migrations
 {
     [DbContext(typeof(AppContext))]
-    partial class AppContextModelSnapshot : ModelSnapshot
+    [Migration("20260310021955_bodyregion")]
+    partial class bodyregion
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -63,7 +66,7 @@ namespace fitmongerdb.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ArticleTypeID"));
 
-                    b.Property<int?>("BodyRegionID")
+                    b.Property<int>("BodyRegionID")
                         .HasColumnType("integer");
 
                     b.Property<string>("Name")
@@ -75,62 +78,6 @@ namespace fitmongerdb.Migrations
                     b.HasIndex("BodyRegionID");
 
                     b.ToTable("ArticleTypes");
-
-                    b.HasData(
-                        new
-                        {
-                            ArticleTypeID = 1,
-                            BodyRegionID = 2,
-                            Name = "Shirt"
-                        },
-                        new
-                        {
-                            ArticleTypeID = 2,
-                            BodyRegionID = 3,
-                            Name = "Pants"
-                        },
-                        new
-                        {
-                            ArticleTypeID = 3,
-                            BodyRegionID = 4,
-                            Name = "Shoes"
-                        },
-                        new
-                        {
-                            ArticleTypeID = 4,
-                            BodyRegionID = 1,
-                            Name = "Hat"
-                        },
-                        new
-                        {
-                            ArticleTypeID = 5,
-                            BodyRegionID = 5,
-                            Name = "Gloves"
-                        },
-                        new
-                        {
-                            ArticleTypeID = 6,
-                            BodyRegionID = 6,
-                            Name = "Scarf"
-                        },
-                        new
-                        {
-                            ArticleTypeID = 7,
-                            BodyRegionID = 7,
-                            Name = "Jacket"
-                        },
-                        new
-                        {
-                            ArticleTypeID = 8,
-                            BodyRegionID = 8,
-                            Name = "Socks"
-                        },
-                        new
-                        {
-                            ArticleTypeID = 9,
-                            BodyRegionID = 9,
-                            Name = "Watch"
-                        });
                 });
 
             modelBuilder.Entity("BodyRegion", b =>
@@ -228,7 +175,9 @@ namespace fitmongerdb.Migrations
                 {
                     b.HasOne("BodyRegion", "BodyRegion")
                         .WithMany()
-                        .HasForeignKey("BodyRegionID");
+                        .HasForeignKey("BodyRegionID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("BodyRegion");
                 });

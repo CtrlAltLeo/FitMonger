@@ -8,6 +8,8 @@ builder.Services.AddOpenApi();
 builder.Services.AddControllers();
 builder.Services.AddDbContext<AppContext>(options => options.UseNpgsql("Host=localhost:5432;Database=fitmongerdb;Username=user;Password=pass"));    
 builder.Services.AddScoped<TestDBService>();
+builder.Services.AddScoped<ArticleService>();
+builder.Services.AddScoped<ArticleTypeService>();
 
 var app = builder.Build();
 
